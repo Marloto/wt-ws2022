@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Attribte: method="get" vs. method="post", action="", action="contact.html", action="irgendwas.html", ggf. input mit type submit ergänzen-->
+    <!-- Beim Get: als Query-Teil Erweiterung, sensible or umfange informationen sind hier nicht gut platziert, max. 8KB -->
+    <!-- Beim Post: als Payload im Rahmen der HTTP-Anfrage, hier können sensible oder umfangreiche Informationen transportiert werden, Beschränkungen nicht direkt -->
+    <!-- Get/Post: Damit Übertragung stattfindet, muss ein Formularfeld einen Namen haben -->
+    <!-- Value bei Eingabefeldern ohne "Texteingabe" -> value wird verwendet um einen Wert zu übertragen, wenn z.B. angehackt -->
+    <!-- Bei Radio-Type -> name identisch wählen, um eine Gruppierung zu erzeugen -->
+    <!-- Vorauswahl bei checkbox / radio: checked -->
+    <!-- Für alle: required um die Eingabe zu erzwingen -->
+    <!-- Placeholder: Eingegrauter Text -->
+    <!-- action erlaubt Formularziel anzugeben, relative, absolut od. als vollständige URL/URI -->
+    <form action="something.html" method="get">
+        <fieldset>
+            <h1>Kontaktformular</h1>
+            <p><label for="text">Name (*): </label> <input type="text" name="text" id="text"  value="" placeholder="Hier den Namen reinschreiben"></p>
+            <p>
+                <label for="radio1">Radio1: </label>
+                <input type="radio" id="radio1"  name="radio" value="other">
+            </p>
+            <p>
+                <label for="radio2">Radio2: </label>
+                <input type="radio" id="radio2" checked name="radio" value="some">
+            </p>
+            <p>
+                <!--name, id, required-->
+                <!--Value-Attribute gibt es nur in Option-Tag, ist optional, gibt an was beim absenden übertragen wird-->
+                <!-- Vorauswahl wird über Option-Tag und selected-Attribut geregelt-->
+                <label for="some-select">Select:</label>
+                <select id="some-select" name="selection">
+                    <option value="a">Variante1</option>
+                    <option value="b">Variante2</option>
+                    <option value="c" selected>Variante3</option>
+                </select>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Some-Name</legend>
+            <p>
+                <a href="register.html"><input type="button" value="Weiterer Button"></a>
+                <!-- Zurücksetzen: Kein neuladen der Webseite, es werden alle Formularfelder geleert, bzw. auf die Startkonfiguration zurückgesetzt -->
+                <input type="reset" value="Irgendwas">
+                <!-- Absenden unter Verwendung von action und method im umschließenden Form-Tag -->
+                <input type="submit" value="Test-Text">
+            </p>
+            <p>
+                <!-- Omg... noch ein Button-->
+                <!-- Unterschied zw. Input-Button und Button-Tag: Input beschränkt sich auf Text, Button-Tag erlaubt beliebige Strukturen -->
+                <input type="button" value="Test">
+                <button type="submit"><mark>Test</mark></button>
+            </p>
+        </fieldset>
+    </form>
+</body>
+
+</html>

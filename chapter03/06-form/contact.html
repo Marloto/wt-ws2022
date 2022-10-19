@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!--Attribte: method="get" vs. method="post", action="", action="contact.html", action="irgendwas.html", ggf. input mit type submit ergänzen-->
+    <form method="post">
+        <h1>Kontaktformular</h1>
+        <p><label for="name">Name: </label><input type="text" id="name" name="name" value="irgend ein Name"></p>
+        <p><label for="mail">E-Mail: </label><input type="email" name="mail" id="mail"></p>
+        <p><label>Betreff: </label><input type="text" name="subject"></p>
+        <p><label for="text">Text: </label><textarea type="text" name="text" id="text">Nix!<br>...</textarea></p>
+        <p><input type="checkbox" name="auswahl" id="self-mail"><label for="self-mail">Bitte eine Kopie an mich senden</label></p>
+        <p><input type="reset" value="Irgendwas"><input type="submit" value="Test-Text"></p>
+    </form>
+</body>
+</html>
