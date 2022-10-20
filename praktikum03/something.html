@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- Wie könnte einem beliebigen Tag, wie h1, eine Eigenschaft hinzugefügt werden? -->
+    <style>
+        /* selector { styles } <- kommentar */
+        p {
+            font-size: 16pt;
+            color: purple;
+        }
+        form {
+            background-color: cyan;
+        }
+        form {
+            text-decoration: underline;
+        }
+
+        .some-class {
+            background-color: yellow;
+        }
+        .other-class {
+            font-size: 42pt;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="some-class other-class" style="color:red">Lorem ipsum dolor sit.</h1>
+    <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, facere?</p>
+    <p class="some-class">Lorem ipsum dolor sit.</p>
+    <form>
+        <p><label for="name">Name: </label><input type="text" name="name" id="name"></p>
+        <p><button>Absenden</button></p>
+    </form>
+    <!-- https://pastie.io/uzlwxb.html -->
+</body>
+</html>
