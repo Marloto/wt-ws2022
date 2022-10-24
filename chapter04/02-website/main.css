@@ -1,0 +1,74 @@
+/* Tag-Selector: ein beliebiges HTML-Element mit Namen ansprechen */
+html {
+    font-family: sans-serif;
+}
+/* Wie könnte der Selektor für den Überschriften-Tag aussehen? */
+h1 {
+    font-family: serif;
+    color: darkgray;
+}
+
+/* Jedes Element kann eine ID erhalten: ID-Selector, beginnt immer mit einem "#" */
+#teaser-text {
+    background-color: yellow;
+}
+
+/* Neues Attribut: "class", kann mehrere Bezeichner für Klassen enthalten, leerzeichengetrennte Aufführung, Auswahl in einem Selektor in CSS beginnt immer mit "." */
+.nav {
+    background: gray;
+}
+
+/* Tag-, ID-, Klassen-Selektoren lassen sich verknüpfen */
+div.nav {
+    color: white;
+}
+
+p.example#teaser-text {
+    font-style: italic;
+}
+
+input.button-submit#send[type="submit"] {
+    background-color: orange;
+}
+/*ID-Selektor mit Attribut-Selektor bauen?*/
+[id="send"] {
+    font-weight: bold;
+}
+/*Klassen-Selektor mit Attribut-Selektor bauen?*/
+[class~="button-submit"] {
+    text-decoration: underline;
+}
+
+/* margin (außen), border(rand), padding(innen) */
+body {
+    /*oben, rechts, unten, links: uhr...*/
+    /*padding: 20px 40px 80px 160px;*/
+    /*padding-top: 20px;
+    padding-right: 40px;
+    padding-bottom: 80px;
+    padding-left: 160px;*/
+    /*margin: 20px 40px 80px 160px;*/
+}
+
+input[type="text"] {
+    padding: 20px;
+    margin: 20px;
+    /*background-color: yellow;*/
+    /*border: 5px dotted purple;
+    border-radius: 20px;*/
+    /*
+    border-color: purple;
+    border-style: dotted;
+    border-width: 5px;*/
+    /*border-top-color: purple;
+    border-bottom-color: orange;
+    border-left-color: cyan;
+    border-right-color: green;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-right-width: 5px;*/
+    border: 0;
+    border-bottom: 3px dashed gray;
+    /*background-image: url(images/something.jpg);*/
+}
