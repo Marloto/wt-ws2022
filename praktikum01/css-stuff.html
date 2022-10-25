@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --main-color: purple;
+        }
+
+        div.inner {
+            display: block;
+            background-color: yellow;
+            width: 250px;
+            height: 100px;
+            /*margin-left: auto;
+            margin-right: auto;*/
+            margin: 0 auto;
+        }
+        span, em {
+            display: inline-block;
+            background-color: orange;
+            width: 125px;
+            height: 100px;
+            /*line-height: 100px;*/
+        }
+        div.content {
+            text-align: center;
+        }
+        div.msg {
+
+        }
+        div.time {
+            float: right;
+            background-color: aqua;
+            width: 150px;
+            height: 25px;
+            text-align: right;
+        }
+        body {
+            font-size: 24pt;
+        }
+        .content {
+            font-size: 0.7em;
+        }
+        .inner {
+            font-size: 1.25em;
+        }
+        em {
+            font-size: 2rem;
+        }
+        html, body {
+            height: 2000px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        [x] Breiten
+        [x] Zentrierung / Links / Rechts: margin auto, float left/right, text-align center
+        [x] Einheiten
+            - Pixel -> px
+            - Prozent -> % (abhängig zum Vorfahre)
+            - Viewport Width / Viewport Height -> vw / vh (abhängig zum Browser-Fenster)
+            - Points -> pt
+            - Schriftgrößen, Beziehen sich auf Vorfahren und verändern die Schriftgröße entsprechend ... em (bezieht sich auf direkten Vorfahre) / rem (bezieht sich auf HTML/Body-Element)
+        [x] Positionierung (relative, absolute, fixed zzgl. left, right, bottom, top)
+        [x] Farben
+           - Farbräume und Kodierung
+           - RGB
+           - HSL
+           - CYMK
+           - über Namen
+           - #FF00FF
+             - #RRGGBB
+             - 0..9ABCDEF
+             - Zwei Zeichen mit je 16 Stufen => 256
+             - Verkürzung: #FFF
+
+        [x] calc -> Größen umwandeln, bzw. Rechnen
+             - Beispiel: width: calc(100% - 100px);
+        [x] Variablen
+    -->
+    <!--div class="content">
+        <div class="inner">Ersten Inhalt</div>
+        Vorher <em>Mehr Inhalt</em> Nachher
+    </div>
+    <div class="msg"><div class="time">12:30:25</div>Ich: Lorem ipsum dolor sit amet consectetur adipisicing elit. In dignissimos laudantium corrupti, atque ipsum voluptatem praesentium cupiditate magnam iure mollitia, sed rem placeat ipsa necessitatibus obcaecati dolore magni vel delectus. </div>
+
+    <div style="width: 70vw; background-color: red;">
+        <div style="width: 70vw; background-color: green;">
+            Test2
+        </div>
+    </div-->
+    <!--div style="height: 100%; background-color: red"></div-->
+    <style>
+        .something {
+            width: 10vw;
+            height: 10vh;
+            background-color: rgba(0, 0, 255, 0.3);
+            opacity: 0.5; /* aufpassen, hat einfluss auf kind-elemente */
+            position: absolute;
+            /*left, right, top, bottom*/
+            right: 10vw;
+            bottom: 10vh;
+        }
+        .more {
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            bottom: 0px;
+            right: 0px;
+            background-color: yellow;
+        }
+        .floating {
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            background-color: var(--main-color);
+            width: 10vw;
+            height: 10vh;
+        }
+        body {
+            background-color: rgb(255, 0, 0);
+        }
+    </style>
+    <div class="something"><div class="more"></div></div>
+    <div class="floating"></div>
+</body>
+</html>
