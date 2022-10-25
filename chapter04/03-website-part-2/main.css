@@ -1,0 +1,163 @@
+/* Tag-Selector: ein beliebiges HTML-Element mit Namen ansprechen */
+html {
+    font-family: sans-serif;
+}
+
+/* Neues Attribut: "class", kann mehrere Bezeichner für Klassen enthalten, leerzeichengetrennte Aufführung, Auswahl in einem Selektor in CSS beginnt immer mit "." */
+.nav {
+    background: #333;
+}
+
+/* Tag-, ID-, Klassen-Selektoren lassen sich verknüpfen */
+div.nav {
+    color: white;
+}
+
+input.button-submit#send[type="submit"] {
+    background-color: orange;
+}
+/*ID-Selektor mit Attribut-Selektor bauen?*/
+[id="send"] {
+    font-weight: bold;
+}
+/*Klassen-Selektor mit Attribut-Selektor bauen?*/
+[class~="button-submit"] {
+    text-decoration: underline;
+}
+
+/* margin (außen), border(rand), padding(innen) */
+body {
+    /*oben, rechts, unten, links: uhr...*/
+    /*padding: 20px 40px 80px 160px;*/
+    /*padding-top: 20px;
+    padding-right: 40px;
+    padding-bottom: 80px;
+    padding-left: 160px;*/
+    /*margin: 20px 40px 80px 160px;*/
+    padding: 0;
+    margin: 0;
+}
+
+input[type="text"] {
+    padding: 20px;
+    margin: 20px;
+    /*background-color: yellow;*/
+    /*border: 5px dotted purple;
+    border-radius: 20px;*/
+    /*
+    border-color: purple;
+    border-style: dotted;
+    border-width: 5px;*/
+    /*border-top-color: purple;
+    border-bottom-color: orange;
+    border-left-color: cyan;
+    border-right-color: green;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-right-width: 5px;*/
+    border: 0;
+    border-bottom: 3px dashed gray;
+    /*background-image: url(images/something.jpg);*/
+}
+
+/* Kontext Selektoren
+- Irgendwo als Kind existiert ein Element mit bestimmten Eigenschaften
+   .nav li
+- Direktes Kind
+   .nav ul > li
+- Nachbar Kontext Selector (irgendwo auf selber ebene)
+   .nav + .content
+- Direkter Nachbar Kontext Selector (muss direkt folgend existieren)
+   .nav ~ .content
+ */
+/*.nav ul > li {
+    font-style: italic;
+}
+.nav ~ .content {
+    text-decoration: underline;
+}*/
+
+/* Pseudoklasse:
+    -> Erlaubt Elemente mit bestimmten Zuständen zu selektieren
+ */
+a {
+    color: orange;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.nav a {
+    color: white;
+}
+.nav a:hover {
+    text-decoration: none;
+}
+.nav li:hover {
+    background-color: #666;
+}
+
+
+/*Selektoren die weitere Klassen am selben Element voraussetzen*/
+.someclass.otherclass {
+
+}
+
+.nav ul, .nav li, .logo {
+    display: inline-block;
+}
+
+.nav ul {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+.logo {
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 40px;
+}
+
+.nav li {
+    line-height: 40px;
+    margin: 0 10px;
+}
+/*Elemente die display:block verwenden, können über margin(left|right) auto und einer festen breite zentriert werden*/
+.container {
+    width: 900px;
+    margin: 0 auto;
+}
+.teaser img {
+    width: 100vw;
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+}
+.teaser {
+    height: 33vh;
+    border-bottom: 5px orange solid;
+}
+
+p.more {
+    text-align: right;
+}
+
+.footer p {
+    text-align: center;
+}
+
+.footer {
+    border-top: 5px orange solid;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: #BBB;
+    color: #666;
+}
+
+/*Links im footer mit speziellen aussehen?*/
+.footer a {
+    color: inherit;
+}
