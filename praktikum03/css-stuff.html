@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<!--
+    - [x] Breite und Box Sizing
+      - display: block notwendig, damit width
+      - display: inline nimmt keine Breiten an
+      - display: inline-block ist im Textfluss und kann eine Breite haben
+      - was ist die "gesamtbreite" eines Elementes?
+      - box-sizing steuert ob padding / border mit zur breite zählt oder nicht; border-box inkl. und content-box (default) exkl.
+      - es gibt spannende weitere display-typen, z.B. flex und grid
+    - [x] Zentrieren / Left / Right
+      - Text-align wirkt sich nur auf inline / inline-block Elemente
+      - Display: block bleibt wo er ist
+      - Text-Align wird vererbt
+      - Margin-left/right auf auto erlaubt Zentrierung / Links / Rechts für Display:block
+    - [ ] Einheiten
+      - Pixel: px -> absolute angabe
+      - Points: pt -> absolute angabe
+      - em / rem -> 2em meint 2x so groß, wie die Schriftart des Elternelements, 2rem meint 2x so groß, wie die Schriftart im Wurzelelement (HTML-Tag)
+      - vw / vh -> Angabe im Bezug zur Fenstergröße, Viewport-Width, Viewport-Height, 0..100
+      - % -> Hierarchy hat Auswirkung, breite des Eltern-Elements hat Einfluss auf das Kind-Element, wenn mit % gearbeitet wird
+        - höhen sind nicht per Default konfiguriert
+        - height von html und body sind 0 oder ergeben sich aus z.B. Textinhalten
+      - cm / mm / inch -> üblich für Druck
+    - [x] Positionierung
+      - position: absolute erlaubt positionierung mit left, right, bottom und top
+      - position; relative erlaubt bezugskoordinatensystem zu schaffen für alle kindelemente, body hat per default kein relative!
+      - position: fixed erlaubt positionierung auf dem browserfenster, unabhängig vom scroll-position
+      - neben position, gibt es noch float left/right, damit kann der textfluss berücksichtigt werden, was bei position nicht der fall ist
+    - [x] Farbräume
+      - Hexadezimalschreibweise
+        - Buchstaben + Zahlen
+        - 0..15 -> 0 .. F
+        - Farbkodierung über 24bit -> 8 bit je Kanal -> 256 farbstufen je Kanal -> 00 = 0 ... FF = 256
+        - #RRGGBB
+        - #FFFFFF -> weiß
+        - #000000 -> schwarz
+        - #FFF -> weiß, nur 16 stufen je Farbkanal
+      - rgb-Angaben
+      - rgba-Angabe -> ergänzung des alpha-kanals
+      - Farbnamen
+      - opacity steuert gesamte deckkraft von Elementen, rgba bezieht sich nur auf den Hindergrund
+      - hsl: hue saturation und lightness
+      - hsla
+    - [x] Responsive Design
+    - [ ] Fancy: calc / var
+      - Berechnung über calc, z.B. width: calc(50% - 20px)
+-->
+<body>
+    <input>
+    <style>
+        .last {
+            background-color: yellow;
+        }
+        @media screen and (max-width: 500px) {
+            input {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+
+    <!--div class="l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nam laudantium dolorum hic asperiores vero numquam? Suscipit nam possimus enim eos odit, expedita sapiente? Culpa accusantium assumenda ipsa consectetur ratione?</div>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        .l {
+            background-color: #FF0000;
+            background-color: #F00;
+            background-color: rgb(255, 0, 0);
+            background-color: rgba(255, 0, 0, 0.5);
+            /*opacity: 0.5;*/
+        }
+    </style-->
+    <!--div class="msg"><span class="time">20:12:20</span>Ich: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque sapiente eaque ea facilis in obcaecati perferendis veniam tempora repudiandae suscipit recusandae officiis quasi quisquam porro, illum, quidem hic. Architecto, iusto. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias labore tempora omnis consequuntur minima dicta? Recusandae corporis quod culpa voluptas. Est voluptatibus enim tempore maiores et iusto porro, harum voluptate! </div>
+    <style>
+        .msg {
+        }
+        .time {
+            float: right;
+            background-color: aqua;
+            width: 150px;
+            height: 75px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style-->
+    <!-- p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa fugiat minus aliquam voluptate quisquam nemo sed non, eius voluptatum iste sint quidem, voluptates quos nam nihil, ex aspernatur aut saepe!
+    </p>
+    Test <div class="j"><div class="k"></div></div> Test
+
+    <div class="l">+</div>
+    <style>
+        body {
+            margin: 0;
+            height: 2000px;
+        }
+        .j {
+            background-color: coral;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            display: inline-block;
+            /*left, right, bottom, top*/
+            top: 0;
+
+        }
+        .k {
+            background-color: yellow;
+            width: 10vw;
+            height: 10vh;
+            position: absolute;
+            left: 10vw;
+        }
+        .l {
+            background-color: chocolate;
+            width: 10vw;
+            height: 10vh;
+            position: fixed;
+            bottom: 10vh;
+            left: 10vw;
+            border-radius: 50%;
+            line-height: 10vh;
+            text-align: center;
+            font-size: 3rem;
+            color: white;
+        }
+    </style-->
+
+    <!--div class="i"></div>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+        }
+        .i {
+            height: 100%;
+            background-color: aqua;
+        }
+    </style-->
+
+    <!--div class="e">
+        <div class="f">Lorem, ipsum.</div>
+    </div>
+    <div class="g">
+        <div class="h">Lorem, ipsum.</div>
+    </div>
+    <style>
+        html {
+            font-size: 16pt;
+        }
+        .e, .f {
+            font-size: 2em;
+        }
+        .g, .h {
+            font-size: 2rem;
+        }
+    </style-->
+
+    <!--div class="c">
+        <div class="d">Lorem, ipsum dolor.</div>
+    </div>
+    <style>
+        .c {
+            background-color: brown;
+            width: 50vh;
+        }
+        .d {
+            background-color: yellow;
+            width: 50vh;
+        }
+    </style-->
+
+    <!--style>
+        body {
+            text-align: center;
+        }
+        .a {
+            background-color: aquamarine;
+            border: 5px solid purple;
+            padding: 5px;
+            margin: 5px;
+            width: 50%;
+            box-sizing: border-box;
+            display: inline-block;
+            text-align: right;
+        }
+        .b {
+            background-color: burlywood;
+            width: 50%;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+    <div class="a">Lorem, ipsum dolor.</div>
+    Test <span class="b">Lorem, ipsum dolor.</span> Test-->
+</body>
+</html>
