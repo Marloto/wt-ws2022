@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        - [x] Breiten
+              - inline Elemente -> kein width
+              - block Elemente -> haben width
+              - inline-block -> Textfluss und Breite möglich
+              - box-sizing steuert das berechnen der gesamten Breite (border-box, content-box)
+        - [x] Zentrieren / Links / Rechts
+              - text-align für inline / inline-block:
+                - gelbe element ist links geblieben, text im element aber zentriert
+                - restliche Elemente zentriert
+              - margin für block:
+                - verwenden von margin auto links / rechts
+        - [x] Box Sizing
+        - [x] Einheiten
+              - Pixel: px
+              - em / rem
+                - em -> schriftgroesse mit bezug zum Elternelement, 2em meint eltern-schriftgroesse * 2
+                - rem -> schriftgroesse mit bezug zum html-element, 2rem meint html.font-size * 2
+              - %
+                - beziehen sich auf elternelemente
+                - html / body hat keine hoehe, daher ggf. nichts sichtbar
+              - cm / mm / inch
+              - wichtig für druck / print
+              - Points: pt
+              - vw / vh
+                - bezieht sich auf fenstergroesse
+        - [x] Positionieren
+              - position: absolute erlaubt positionierung über left/right/bottom/top; text fluss spielt hier dann keine Rolle mehr
+              - position: relative definiert das Bezugskoordinatensystem für kind-elemente, die position: absolute verwenden
+              - position: fixed erlaubt die fixierte positionierung im fenster
+        - [x] Farben
+              - #-Farben, Hexadezimaldarstellung einer Farbe, 0..F, #RRGGBB, auch #RGB
+              - rgb (0...255, 0..255, 0..255)
+              - cmyk
+              - namen -> bezieht sich auf eine vordefinierte farbe (meist rgb)
+              - _hsl_ / hsb / hsi
+              - mit alpha-kanal möglich, rgba oder hsla
+        - [x] Fancy: calc und var
+    -->
+
+    <div class="k"><div class="l">Test</div></div>
+    <style>
+        :root {
+            --main-color: rgba(255, 0, 0, 0.5);
+        }
+        body {
+            background-color: blue;
+        }
+        .k {
+            /*background-color: rgb(255, 0, 0);
+            background-color: #FF0000;
+            background-color: #F00;*/
+            background-color: var(--main-color);
+        }
+
+        .l {
+            background-color: yellow;
+            width: 50vw;
+        }
+    </style>
+
+    <!--div class="msg"><span class="time">10:40:00</span>Ich: Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Error facere accusamus omnis neque cumque expedita quas repudiandae veritatis sequi reprehenderit, aspernatur consequuntur molestiae minus eius quo maxime impedit!</div>
+    <style>
+        .time {
+            float: right;
+            background-color: aqua;
+            width: 200px;
+            height: 50px;
+        }
+    </style-->
+
+    <!--p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus facilis ullam sapiente! Minus eius quibusdam numquam obcaecati. Molestias minus, voluptas maxime rerum quod suscipit molestiae saepe praesentium? Tempora, repudiandae porro. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta atque itaque doloremque maxime. Illo possimus quam, excepturi consequatur voluptatem ipsum iure praesentium eum iste iusto tempore obcaecati numquam nemo quaerat.</p>
+    <div class="h">
+        <div class="i"></div>
+    </div>
+    <div class="j"></div>
+    <style>
+        body {
+            margin: 0;
+            height: 2000px;
+            position: relative;
+        }
+        .h {
+            position: absolute;
+            background-color: aquamarine;
+            width: 20vw;
+            height: 20vh;
+
+            /*left, right, bottom, top*/
+            right: 10vw;
+            top: 10vh;
+            /*left: 10vw;
+            top: 10vh;*/
+        }
+        .i {
+            background-color: cadetblue;
+            width: 10vw;
+            height: 10vh;
+            position: absolute;
+            left: 10vw;
+        }
+        .j {
+            position: fixed;
+            background-color: chocolate;
+            width: 10vw;
+            height: 10vh;
+            left: 10vw;
+            bottom: 10vh;
+        }
+    </style-->
+
+    <!--div class="g"></div>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+        }
+        .g {
+            background-color: aqua;
+            height: 100%;
+            width: 100%;
+        }
+    </style-->
+
+    <!--div class="c">
+        <div class="d">Test</div>
+    </div>
+    <div class="e">
+        <div class="f">Test</div>
+    </div>
+    <style>
+        html {
+            font-size: 16pt;
+        }
+        .c {
+            background-color: yellow;
+            width: 50vw;
+        }
+        .d {
+            background-color: orange;
+            width: 50vw;
+        }
+        .c, .d {
+            font-size: 2em;
+        }
+        .e, .f {
+            font-size: 2rem;
+        }
+    </style-->
+
+
+
+    <!--
+    <div class="a">Lorem, ipsum dolor.</div>
+    Test <span class="b">Lorem, ipsum dolor.</span> Test
+    <style>
+        body {
+            text-align: center;
+        }
+        .a {
+            display: inline-block;
+            background-color: orange;
+            border: 5px solid purple;
+            padding: 5px;
+            margin: 5px;
+            width: 200px;
+            box-sizing: border-box;
+        }
+        .b {
+            display: block;
+            background-color: yellow;
+            border: 5px solid purple;
+            padding: 5px;
+            width: 180px;
+            box-sizing: content-box;
+            margin: 0 0 0 auto;
+        }
+    </style>
+    -->
+</body>
+</html>
