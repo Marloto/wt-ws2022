@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form name="myform">
+        <button type="button" onclick="checkStuff()"></button>
+    </form>
+    <script>
+        function submitForm() {
+            document.myform.submit();
+        }
+        function checkUser() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    if(xmlhttp.status == 204) {
+                        console.log("Exists");
+                        // ... etwas machen ...
+                    } else if(xmlhttp.status == 404) {
+                        submitForm();
+                    }
+                }
+            };
+            xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/3ea10237-0a75-4ac8-b6cb-794cc8c0bbce/user/Tom", true);
+            xmlhttp.send(); // wird hintergrund abgesendet
+        }
+        function checkStuff() {
+            // 1. prüfen ob passwort stimmt
+            // 2. username lang genug
+            // 3. ... passwort gleich wiederholung
+            // 4. check username, wenn alles andere korrekt ist
+            checkUser();
+        }
+    </script>
+</body>
+</html>
