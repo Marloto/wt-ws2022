@@ -1,0 +1,47 @@
+<!--Ziel: HTML-Dokument, mit Div-Container und eigener Klasse -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .eineklasse {
+            width: 500px;
+            margin: 0 auto;
+            border: 1px dotted black;
+        }
+        label {
+            width: 200px;
+            display: inline-block;
+            text-align: right;
+        }
+        input {
+            width: 290px;
+        }
+
+        @media screen and (max-width: 756px) {
+            .eineklasse {
+            }
+
+            input, label {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                /* Beobachtung: breite ist zzgl. padding und border*/
+            }
+            label {
+                text-align: left;
+            }
+        }
+        @media screen and (max-width: 500px) {
+            .eineklasse {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="eineklasse"><label>Name: </label><input></div>
+</body>
+</html>
