@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .a {
+            background-color: red;
+        }
+        /*@media (max-width: 700px) {
+            .a {
+                background-color: yellow;
+            }
+            label, input {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }*/
+
+        /**
+         * Standard:    innen = width
+         *              außen = width + border + padding
+         * -> content-box
+         * Alternative: inner = width - border - padding
+         *              außen = width
+         * -> border-box
+         */
+        div.d {
+            width: 400px;
+            height: 20px;
+            background-color: cyan;
+        }
+        input.c {
+            padding: 5px;
+            border: 1px solid black;
+            background-color: bisque;
+            width: 400px; /**/
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!--div class="a">
+        <label>Test</label>
+        <input>
+    </div-->
+
+    <div class="b">
+        <input class="c">
+        <div class="d"></div>
+    </div>
+</body>
+</html>
