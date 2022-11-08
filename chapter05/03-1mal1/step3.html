@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function generateRow(x, i) {
+            for(var j = 1; j <= x; j ++) {
+                // document.writeln(i + " x " + j + ": " + (i * j) + "<br>");
+                document.writeln(`<td>${i * j}</td>`);
+            }
+        }
+        function generateTable(x, y) {
+            // console.dir(document);
+            // console.dir(window);
+            // console.dir(document.body.children);
+            // console.dir(document.head);
+
+            document.writeln("<table>");
+            document.writeln("<tbody>");
+            for(var i = 1; i <= y; i ++) {
+                document.writeln("<tr>");
+                generateRow(x, i);
+                document.writeln("</tr>");
+            }
+            document.writeln("</tbody>");
+            document.writeln("</table>");
+        }
+
+        function handleClick() {
+            var inputFuerX = document.querySelector('#x');
+            var inputFuerY = document.getElementById('y');
+
+            var x = inputFuerX.value;
+            var y = inputFuerY.value;
+
+            generateTable(x, y);
+        }
+        
+    </script>
+
+    <p>
+        <input id="x"> x <input id="y"> <button onclick="handleClick();">Anzeigen</button>
+    </p>
+</body>
+</html>

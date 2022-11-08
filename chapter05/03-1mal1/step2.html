@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function generateTable(x, y) {
+            document.writeln("<table>");
+            document.writeln("<tbody>");
+            for(var i = 1; i <= y; i ++) {
+                document.writeln("<tr>");
+                for(var j = 1; j <= x; j ++) {
+                    // document.writeln(i + " x " + j + ": " + (i * j) + "<br>");
+                    document.writeln(`<td>${i * j}</td>`);
+                }
+                document.writeln("</tr>");
+            }
+            document.writeln("</tbody>");
+            document.writeln("</table>");
+        }
+        generateTable(5, 10);
+    </script>
+</body>
+</html>
