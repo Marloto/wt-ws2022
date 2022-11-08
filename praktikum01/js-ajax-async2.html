@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+var userDoesNotExists = false;
+function handleCheckUserExists(name) {
+    console.log("Check user", name);
+    userDoesNotExists = false; // empfehlung
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+            if(xmlhttp.status == 204) {
+                // ... irgendwie mittels css visualisieren
+                console.log("Exists", name);
+                userDoesNotExists = false;
+            } else if(xmlhttp.status == 404) {
+                // ... irgendwie mittels css visualisieren
+                console.log("Does not exist", name);
+                userDoesNotExists = true;
+            }
+        }
+    };
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/0b570e31-98dc-42a6-94d0-d03fa594e050/user/" + name, true);
+    xmlhttp.send(); 
+}
+function check() {
+    return userDoesNotExists; // check other stuff
+}
+
+// document.body.addEventListener('click', function() {
+
+// });
+
+// function standard() {
+//     console.log("Test");
+// }
+// var abc = standard; // wenn keine ()
+// abc(); 
+// standard();
+// xmlhttp.onreadystatechange = standard;
+// xmlhttp.onreadystatechange = function() {
+
+// };
+
+// var helper = xmlhttp.onreadystatechange;
+// helper();
+    </script>
+</head>
+<body>
+    <!-- in einem on... Attribut mit return arbeiten, um an den Browser zurückzugeben, dass das Ergebnis für die weitere Verarbeitung berücksichtigt werden kann. -->
+    <form name="myform" onsubmit="return check();" method="get" action="js-ajax.html">
+        <label>Username: </label>
+        <input onblur="handleCheckUserExists(`Tom`)" name="username" id="user" placeholder="Your Username"><br>
+        <button type="submit">Absenden</button>
+    </form>
+</body>
+</html>

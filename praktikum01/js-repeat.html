@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function selbesPrinzip() {
+            console.log("Test!");
+        }
+        //window.setTimeout(selbesPrinzip, 5000);
+        var etwas = window.setInterval(selbesPrinzip, 1000);
+        window.clearInterval(etwas);
+    </script>
+</body>
+</html>

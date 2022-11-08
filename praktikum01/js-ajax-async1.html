@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+// Beispiele basieren auf: https://online-lectures-cs.thi.de/chat/dummy
+// Zusatz:
+// - console.log(...) hilft beim Ausgeben von Informationen
+
+function handleSubmitForm() {
+    document.myform.submit(); // absenden eines formulares mit dem attribut name="myform"
+}
+
+// Konstruktor-Aufruf zum Erzeugunen eines Objektes
+function handleCheckUserExists(name, callback) {
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function () {
+        console.log("State: " + xmlhttp.readyState);
+        // prueft, ob alles fertig
+        //   1 = abgesendet
+        //   2 = header empfangen von der antwort
+        //   3 = zwischen information, während geladen wird (vgl. große dateien)
+        //   4 = alles da!
+        if (xmlhttp.readyState == 4) {
+            console.log("Alles da!")
+            if(xmlhttp.status == 204) {
+                callback(true);
+            } else if(xmlhttp.status == 404) {
+                callback(false);
+            }
+        }
+    };
+    // xmlhttp.onreadystatechange(); <- passiert irgendwann intern, wenn z.B. Antworten aus der HTTP-Anfrage ankommen
+
+    // Methodenaufruf auf dem Objekt xmlhttp
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/0b570e31-98dc-42a6-94d0-d03fa594e050/user/" + name, true);
+    // Methodenaufruf auf dem Objekt xmlhttp
+    xmlhttp.send(); 
+}
+
+function handleOnClickParagraph() {
+    console.log('TEST!'); // <- hier alles mögliche denkbar, zur modifikation des dokumentes
+}
+
+// function someMethod(result) {
+//     if(!result) {
+//         handleSubmitForm();
+//     }
+// }
+
+function handleOnClickSubmit() {
+    // ... 1. passwortlänge
+    // ... 2. passwort == wiederholung
+    // ... 3. username > 3 zeichen
+    // ... 4. user exists?
+    // Lambda: handleCheckUserExists("Tom", () => !result && handleSubmitForm());
+    // Alternative mit benannter Funktion: handleCheckUser("Tom", someMethod);
+    handleCheckUserExists("Tom", function () {
+        if(!result) {
+            handleSubmitForm();
+        }
+    });
+}
+    </script>
+</head>
+<body>
+    <p onclick="handleOnClickParagraph()" >Test!</p>
+    <!--
+        Jedes Element hat verschiedene Ereignisse:
+        - onclick
+        - onsubmit
+        - onblur: verlassen eines eingabe feldes
+        - onfocus: betreten eines eingabe feldes
+        - ...
+    -->
+    <form name="myform" onsubmit="" method="get" action="js-ajax.html">
+        <label>Username: </label>
+        <input onblur="console.log('Blur');" onfocus="console.log('Focus');" name="username" id="user" placeholder="Your Username"><br>
+        <button onclick="handleOnClickSubmit();" type="button">Absenden</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        let data = JSON.parse(xmlhttp.responseText);
+        console.log(data);
+    }
+};
+xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/0b570e31-98dc-42a6-94d0-d03fa594e050/message/Jerry", true);
+// Add token, e. g., from Tom
+xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjY3ODk4MTIyfQ.ekUM9EwF3qB9XqUQE-WgNYNYE_-_GkE97p-2AIkLAIw');
+xmlhttp.send();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
