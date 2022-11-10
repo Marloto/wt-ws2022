@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+var userDoesNotExist = false;
+
+// https://online-lectures-cs.thi.de/chat/dummy#user-exists 
+// Variable definieren, der Aufruf des Konstruktors für die Klasse XMLHttpRequest
+function checkUser(username) {
+    var xmlhttp = new XMLHttpRequest(); 
+    // Funktion
+    function doSomething() {
+        // informiert über Änderungen, während der Bearbeitung
+        // der HTTP-Anfrage
+        // -> 1 abgesendet
+        // -> 2 antwort header da
+        // -> 3 zwischenlade prozess
+        // -> 4 alles fertig
+        console.log("State: ", xmlhttp.readyState);
+        if (xmlhttp.readyState == 4) {
+            if(xmlhttp.status == 204) {
+                console.log("Exists");
+                userDoesNotExist = false;
+            } else if(xmlhttp.status == 404) {
+                console.log("Does not exist");
+                userDoesNotExist = true;
+            }
+        }
+    }
+    // zuweisung in ein Attribut des Objektes, welches über xmlhttp referenziert
+    xmlhttp.onreadystatechange = doSomething;
+    // Methoden aufrufe, z.B. send und open
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/fe694b1b-179b-451c-aa01-5832bc54b3f6/user/" + username, true);
+    xmlhttp.send();
+    console.log("Abgesendet");
+}
+
+function checkUserFieldInput() {
+    // field input?
+    var inputField = document.getElementById("username");
+    var username = inputField.value;
+    checkUser(username);
+}
+
+function checkInputs() {
+    return userDoesNotExist; // && ...
+}
+
+    </script>
+
+    <form method="get" onsubmit="return checkInputs();" action="js-example.html">
+        <input onblur="checkUserFieldInput()" onfocus="" onkeyup="" id="username">
+        <button type="submit">Absenden</button>
+    </form>
+</body>
+</html>
