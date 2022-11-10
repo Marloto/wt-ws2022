@@ -26,6 +26,7 @@ function checkUser(username) {
             if(xmlhttp.status == 204) {
                 console.log("Exists");
                 userDoesNotExist = false;
+
             } else if(xmlhttp.status == 404) {
                 console.log("Does not exist");
                 userDoesNotExist = true;
@@ -43,6 +44,9 @@ function checkUser(username) {
 function checkUserFieldInput() {
     // field input?
     var inputField = document.getElementById("username");
+    // Tip: CSS-Klassen hinzufügen / entfernen
+    // inputField.classList.add("someclass")
+    // inputField.classList.remove("someclass")
     var username = inputField.value;
     checkUser(username);
 }
