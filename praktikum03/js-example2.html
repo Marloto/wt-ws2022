@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function submitForm() {
+    // wie kommen Sie an das form-Tag-Element mittels JavaScript heran?
+    var formArea = document.getElementById("myform");
+    formArea.submit();
+}
+
+// https://online-lectures-cs.thi.de/chat/dummy#user-exists 
+// Variable definieren, der Aufruf des Konstruktors für die Klasse XMLHttpRequest
+function checkUser(username) {
+    var xmlhttp = new XMLHttpRequest(); 
+    // Funktion
+    function doSomething() {
+        // informiert über Änderungen, während der Bearbeitung
+        // der HTTP-Anfrage
+        // -> 1 abgesendet
+        // -> 2 antwort header da
+        // -> 3 zwischenlade prozess
+        // -> 4 alles fertig
+        console.log("State: ", xmlhttp.readyState);
+        if (xmlhttp.readyState == 4) {
+            if(xmlhttp.status == 204) {
+                console.log("Exists");
+                
+
+            } else if(xmlhttp.status == 404) {
+                console.log("Does not exist");
+                submitForm();
+            }
+        }
+    }
+    // zuweisung in ein Attribut des Objektes, welches über xmlhttp referenziert
+    xmlhttp.onreadystatechange = doSomething;
+    // Methoden aufrufe, z.B. send und open
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/fe694b1b-179b-451c-aa01-5832bc54b3f6/user/" + username, true);
+    xmlhttp.send();
+    console.log("Abgesendet");
+}
+
+function checkAllFields() {
+    // 1. |username| > 3
+    // 2. |password| > 8
+    // 3. password == repeat
+    // 4. userExist-check
+
+    var inputField = document.getElementById("username");
+    var username = inputField.value;
+    checkUser(username);
+}
+
+    </script>
+
+    <form method="get" action="js-example.html" id="myform">
+        <input id="username">
+        <button onclick="checkAllFields()" type="button">Absenden</button>
+    </form>
+</body>
+</html>
