@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+var usernameDontExists;
+
+function sendMessage() {
+    // -> https://online-lectures-cs.thi.de/chat/dummy (Send Message)
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
+            console.log("done...");
+        }
+    };
+    xmlhttp.open("POST", "https://online-lectures-cs.thi.de/chat/60f95539-3f16-4ac9-b28b-f5c1a593137a/message", true);
+    xmlhttp.setRequestHeader('Content-type', 'application/json');
+    // Add token, e. g., from Tom
+    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjY4MDczNjU0fQ.H8kqoh92Bi8KjcFTvu0Ri05zNBmvPw2jqNh59b3EVZE');
+    // Create request data with message and receiver
+    let data = {
+        message: "Hello?!",
+        to: "Jerry"
+        // why is there no "from", weil im Token!
+    };
+    let jsonString = JSON.stringify(data); // Serialize as JSON
+    xmlhttp.send(jsonString);
+}
+
+function listUsers() {
+    // -> https://online-lectures-cs.thi.de/chat/dummy (List Users)
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            let data = JSON.parse(xmlhttp.responseText);
+            console.log(xmlhttp.responseText);
+            console.log(data);
+        }
+    };
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/60f95539-3f16-4ac9-b28b-f5c1a593137a/user", true);
+    // Add token, e. g., from Tom
+    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjY4MDczNjU0fQ.H8kqoh92Bi8KjcFTvu0Ri05zNBmvPw2jqNh59b3EVZE');
+    xmlhttp.send();
+}
+
+listUsers();
+
+function checkUsername(username) {
+    // -> https://online-lectures-cs.thi.de/chat/dummy (User Exists)
+    var xmlhttp = new XMLHttpRequest();
+    
+    function doSomething() {
+        console.log("State:", xmlhttp.readyState);
+        if (xmlhttp.readyState == 4) {
+            if(xmlhttp.status == 204) {
+                console.log("Exists");
+                usernameDontExists = false;
+                //inputField.classList.add or remove
+            } else if(xmlhttp.status == 404) {
+                console.log("Does not exist");
+                usernameDontExists = true;
+                //inputField.classList.add or remove
+            }
+        }
+    }
+    
+    //xmlhttp.someAttr = 42;
+    xmlhttp.onreadystatechange = doSomething; // <- ohne ()
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/60f95539-3f16-4ac9-b28b-f5c1a593137a/user/" + username, true);
+    xmlhttp.send();
+    console.log("HTTP-Request submitted...");
+}
+
+function checkUserField() {
+    // ??? daten!
+    var inputField = document.getElementById("username");
+    
+    var currentUser = inputField.value; // string!
+    // usernameDontExists = true; <-
+    checkUsername(currentUser);
+}
+
+function checkSubmit() {
+    return usernameDontExists;
+}
+
+// Aufgabe: realisieren Sie daraus eine Funktion, die einen übergeben
+//          namen überprüft?
+    </script>
+
+    <form method="get" onsubmit="return checkSubmit();" action="js-example.html">
+        <input onblur="checkUserField()" onfocus="" onkeyup="" type="text" name="username" id="username"> <button type="submit">Absenden</button>
+    </form>
+</body>
+</html>

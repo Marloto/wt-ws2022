@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function doSubmit() {
+    var form = document.getElementById('myform');
+    form.submit();
+}
+function checkUsername(username) {
+    // -> https://online-lectures-cs.thi.de/chat/dummy (User Exists)
+    var xmlhttp = new XMLHttpRequest();
+    
+    function doSomething() {
+        console.log("State:", xmlhttp.readyState);
+        if (xmlhttp.readyState == 4) {
+            if(xmlhttp.status == 204) {
+                console.log("Exists");
+                //inputField.classList.add or remove
+            } else if(xmlhttp.status == 404) {
+                console.log("Does not exist");
+                //inputField.classList.add or remove
+                doSubmit();
+            }
+        }
+    }
+    
+    //xmlhttp.someAttr = 42;
+    xmlhttp.onreadystatechange = doSomething; // <- ohne ()
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/60f95539-3f16-4ac9-b28b-f5c1a593137a/user/" + username, true);
+    xmlhttp.send();
+    console.log("HTTP-Request submitted...");
+}
+
+function checkUserField() {
+    // ??? daten!
+    var inputField = document.getElementById("username");
+    
+    var currentUser = inputField.value; // string!
+    // usernameDontExists = true; <-
+    checkUsername(currentUser);
+}
+function checkFields() {
+    // 1. username >3
+    // 2. passwort > 8
+    // 3. passwort == wiederholung
+    // 4. userexists...
+    checkUserField()
+}
+
+// Aufgabe: realisieren Sie daraus eine Funktion, die einen übergeben
+//          namen überprüft?
+    </script>
+
+    <form id="myform" method="get" action="js-example.html">
+        <input type="text" name="username" id="username"> <button type="button" onclick="checkFields()">Absenden</button>
+    </form>
+</body>
+</html>
