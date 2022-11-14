@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <p>
+        <input type="number" value="0" id="x"> x <input type="number" value="0" id="y">
+    </p>
+    <table>
+        <tbody id="output">
+        </tbody>
+    </table>
+    <script>
+        function generateRow(x, i, tr) {
+            for(var j = 1; j <= x; j ++) {
+                var cell = document.createElement("td");
+                cell.innerText = `${i * j}`;
+                tr.append(cell);
+            }
+        }
+        function clearStuff(tbodyRef) {
+            var childs = tbodyRef.children;
+            //for(var i = 0; i < childs.length; i ++) {
+            for(var i = childs.length - 1; i >= 0; i --) {
+                tbodyRef.removeChild(childs[i]);
+            }
+        }
+
+        function generateTable(x, y) {
+            var output = document.getElementById("output");
+            //clearStuff(output);
+            output.innerHTML = "";
+            for(var i = 1; i <= y; i ++) {
+                var row = document.createElement("tr");
+                generateRow(x, i, row);
+                output.append(row);
+            }
+        }
+
+        function handleClick() {
+            var inputFuerX = document.querySelector('#x');
+            var inputFuerY = document.getElementById('y');
+
+            var x = inputFuerX.value;
+            var y = inputFuerY.value;
+
+            generateTable(x, y);
+        }
+        
+        // addEventListener('event', function) <- nicht aufrufen!
+
+        document.getElementById('x').addEventListener('change', handleClick);
+        document.getElementById('y').addEventListener('change', handleClick);
+    </script>
+</body>
+</html>

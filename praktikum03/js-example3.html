@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// JSON -> Format zur Serialisierung von Daten
+// -> JSON.stringify(Object) : String
+// -> JSON.parse(String) : Object
+
+// https://online-lectures-cs.thi.de/chat/dummy#list-users
+function listUsers() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            let data = JSON.parse(xmlhttp.responseText);
+            console.log(xmlhttp.responseText);
+            console.log(data);
+            console.log(data.length); // <- array length
+        }
+    };
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/fe694b1b-179b-451c-aa01-5832bc54b3f6/user", true);
+    // Add token, e. g., from Tom
+    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjY4MDgzMTI0fQ.cXCYXGQS19Q0bT9AblaB5SROiLtAM2oB2SoBH9Uoplg');
+    xmlhttp.send();
+}
+listUsers();
+    </script>
+</body>
+</html>

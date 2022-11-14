@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+function addMessage(to, username) {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
+            console.log("done...");
+        }
+    };
+    xmlhttp.open("POST", "https://online-lectures-cs.thi.de/chat/fe694b1b-179b-451c-aa01-5832bc54b3f6/message", true);
+    xmlhttp.setRequestHeader('Content-type', 'application/json');
+    // Add token, e. g., from Tom
+    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjY4MDgzMTI0fQ.cXCYXGQS19Q0bT9AblaB5SROiLtAM2oB2SoBH9Uoplg');
+    // Create request data with message and receiver
+    var msgField = document.getElementById("message");
+    let data = {
+        message: msgField.value,
+        to: "Jerry"
+    };
+    let jsonString = JSON.stringify(data); // Serialize as JSON
+    xmlhttp.send(jsonString); // Send JSON-data to server
+}
+
+function sendMessage() {
+    var message = msgField.value;
+    addMessage("Jerry", message);
+}
+
+function loadMessages(username) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            let data = JSON.parse(xmlhttp.responseText);
+            console.log(data);
+        }
+    };
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/fe694b1b-179b-451c-aa01-5832bc54b3f6/message/" + username, true);
+    // Add token, e. g., from Tom
+    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjY4MDgzMTI0fQ.cXCYXGQS19Q0bT9AblaB5SROiLtAM2oB2SoBH9Uoplg');
+    xmlhttp.send();
+}
+
+function update() {
+    console.log("Test!");
+    loadMessages("Jerry");
+}
+
+window.setInterval(update, 1000);
+
+var date = new Date(1668083124189);
+console.log(date)
+
+    </script>
+
+    <input id="message"><button onclick="" type="button">Send</button>
+</body>
+</html>
