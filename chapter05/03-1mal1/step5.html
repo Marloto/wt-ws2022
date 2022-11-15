@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 16pt;
+            font-family: sans-serif;
+        }
+        input[type="range"] {
+            width: 200px;
+        }
+        .config {
+            margin: 0 auto;
+            width: 600px;
+            text-align: center;
+        }
+        .config span {
+            color: lightgray;
+        }
+        table {
+            margin: 25px auto;
+        }
+        #output td {
+            width: 50px;
+            text-align: center;
+            background-color: #EEE;
+        }
+        #output td:first-child {
+            font-weight: bold;
+        }
+        #output tr:first-child td {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="config">
+        <input type="range" min="1" max="10" value="3" id="x"> <span>Width x Height</span> <input type="range" min="1" max="10" value="3" id="y">
+    </p>
+    <table>
+        <tbody id="output">
+        </tbody>
+    </table>
+    <script>
+        function removeCell(cell) {
+            cell.parentElement.removeChild(cell);
+        }
+
+        function removeRow(row) {
+            row.parentElement.removeChild(row);
+        }
+
+        function clearRows(output, newY) {
+            var rows = output.children;
+            for(var i = rows.length - 1; i >= newY; i --) {
+                var cells = rows[i].children;
+                for(var j = cells.length - 1; j >= 0; j --) {
+                    removeCell(cells[j]);
+                }
+                removeRow(rows[i]);
+            }
+        }
+
+        function clearColumns(output, newX) {
+            var rows = output.children;
+            for(var i = 0; i < rows.length; i ++) {
+                var cells = rows[i].children;
+                for(var j = cells.length - 1; j >= newX; j --) {
+                    removeCell(cells[j]);
+                }
+            }
+        }
+
+        function addCell(x, y) {
+            var cell = document.createElement("td");
+            cell.innerText = `${x * y}`;
+            return cell;
+        }
+
+        function generateRow(x, i, tr) {
+            for(var j = tr.children.length + 1; j <= x; j ++) {
+                tr.append(addCell(i, j));
+            }
+        }
+
+        function generateTable(x, y) {
+            var output = document.getElementById("output");
+            clearRows(output, y);
+            clearColumns(output, x);
+            var childs = output.children;
+            var oldY = childs.length;
+            for(var i = 1; i <= y; i ++) {
+                var row;
+                if(i - 1 < oldY) {
+                    row = childs[i - 1];
+                } else {
+                    row = document.createElement("tr");
+                    output.append(row);
+                }
+                generateRow(x, i, row);
+            }
+        }
+
+        function handleClick() {
+            var inputFuerX = document.querySelector('#x');
+            var inputFuerY = document.getElementById('y');
+
+            var x = inputFuerX.value;
+            var y = inputFuerY.value;
+
+            generateTable(x, y);
+        }
+
+        document.getElementById('x').addEventListener('input', handleClick);
+        document.getElementById('y').addEventListener('input', handleClick);
+
+        handleClick()
+    </script>
+</body>
+</html>
