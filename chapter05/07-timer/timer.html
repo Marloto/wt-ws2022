@@ -76,7 +76,7 @@
         <input id="minuten" type="number" value="0"><span class="unit">min</span>
         <span>:</span>
         <input id="sekunden" type="number" value="0"><span class="unit">sek</span>
-        <button>Start</button>
+        <button onclick="onClickButton()">Start</button>
         <hr>
         <div class="timer">00:00</div>
     </div>
@@ -88,23 +88,49 @@
          (2) Die Rückgabe von setInterval kann verwendet werden, um diesen später zu Stoppen, z.B. var runningTimer = window.setInterval(...); window.clearInterval(runningTimer);
          (3) Mit parseFloat(variable); kann eine Zeichenkette in eine Zahl umgewandelt werden, Hilfreich beim Auslesen von Formularfeldern
          */
-        var time = 0;
+
+        // Date-Klasse, new Date(...);
+        // -> getDay, getMonth, getYear, ...
+        // -> toLocal...
+
+        var time = 66;
         var runningTimer;
         function timer() {
             if(time > 0) {
                 // Fügen Sie die Logik zur Anzeige des Timers hinzu
-                
+                // -> /, %, *
+                var m = Math.floor(time / 60);
+                var s = time - m * 60;
+                if(m < 10) {
+                    m = "0" + m;
+                }
+                if(s < 10) {
+                    s = "0" + s;
+                }
+                document.getElementsByClassName('timer')[0].innerHTML = `${m}:${s}`;
+                time --;
             } else {
                 stopTimer();
             }
         }
         function startTimer() {
             // Starten Sie den Timer (Zeit berechnen, Intervall starten und merken, erstes mal timer() aufrufen)
-            
+            var m = document.getElementById("minuten").value;
+            var s = document.getElementById("sekunden").value;
+
+            time = parseFloat(m) * 60 + parseFloat(s);
+
+            runningTimer = setInterval(timer, 1000);
+
+            document.getElementsByTagName('button')[0].innerText = "Stop";
+            timer();
         }
         function stopTimer() {
             // Stoppen Sie den Timer (clearInterval und Zurücksetzen der Anzeige)
-            
+            document.getElementsByTagName('button')[0].innerText = "Start";
+            clearInterval(runningTimer);
+            runningTimer = null;
+            document.getElementsByClassName('timer')[0].innerHTML = `00:00`;
         }
         function onClickButton() {
             if(runningTimer) {
@@ -113,7 +139,7 @@
                 startTimer();
             }
         }
-        
+
     </script>
 </body>
 

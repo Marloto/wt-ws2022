@@ -37,7 +37,15 @@
 
         function change() {
             // Wechseln Sie mit jedem Aufruf von change die CSS-Klasse zwischen pack1 und pack2
-            
+            // classList - Attribut in HTML-Objekten
+            if(pack.classList.contains("pack1")) {
+                pack.classList.remove("pack1");
+                pack.classList.add("pack2");
+            } else {
+                pack.classList.remove("pack2");
+                pack.classList.add("pack1");
+
+            }
         }
 
         function update() {
@@ -48,22 +56,34 @@
         update();
 
         function down() {
-            
+            y ++;
+            update();
         }
         function up() {
-            
+            y --;
+            update();
         }
         function left() {
-            
+            x --;
+            update();
         }
         function right() {
-            
+            x ++;
+            update();
         }
 
         document.body.addEventListener("keydown", function(event) {
             // Nutze Sie den Parameter event, um herauszufinden, welche Taste gedrückt wurde.
             // Werfen Sie einen Blick auf https://keycode.info/ und probieren Sie die Pfeiltasten aus
-            
+            if(event.which == 37) {
+                left();
+            } else if(event.which == 38) {
+                up();
+            } else if(event.which == 39) {
+                right();
+            } else if(event.which == 40) {
+                down();
+            }
         }, true)
     </script>
 </body>
