@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name) {
+                this._name = name;
+            }
+
+            getName() {
+                return this._name;
+            }
+
+            get name() {
+                return this._name;
+            }
+            set name(value) {
+                this._name = value;
+            }
+        }
+
+        var p = new Person("Test");
+        console.log(p.name);
+        p.name = "Test1";
+        console.log(p.getName());
+        console.dir(p);
+
+        function Person2(name) {
+            this._name = name;
+        }
+
+        var p2 = new Person2("Test123");
+        console.dir(p2);
+        console.dir(Person.prototype);
+        console.dir(Person2.prototype);
+
+
+        Person.prototype.doSomething = function() {
+            return "Hello, World!";
+        }
+
+        console.log(p.doSomething());
+    </script>
+</body>
+</html>
