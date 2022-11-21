@@ -15,7 +15,7 @@ function submitForm() {
 
 // https://online-lectures-cs.thi.de/chat/dummy#user-exists 
 // Variable definieren, der Aufruf des Konstruktors für die Klasse XMLHttpRequest
-function checkUser(username) {
+function checkUser(username, callback) {
     var xmlhttp = new XMLHttpRequest(); 
     // Funktion
     function doSomething() {
@@ -29,11 +29,10 @@ function checkUser(username) {
         if (xmlhttp.readyState == 4) {
             if(xmlhttp.status == 204) {
                 console.log("Exists");
-                
-
+            
             } else if(xmlhttp.status == 404) {
                 console.log("Does not exist");
-                submitForm();
+                submitForm(true);
             }
         }
     }
