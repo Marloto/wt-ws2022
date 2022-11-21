@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Entweder display-flex verwenden */
+        /* Display block / inline-block */
+        body, html, div {
+            margin: 0px;
+            padding: 0px;
+        }
+        /*.col-1, .col-2, .col-3, .col-4, .col-12 {*/
+        [class*="col-"] {
+            display: inline-block;
+        }
+        .col-1 {
+            width: calc(100% / 12);
+        }
+        .col-2 {
+            width: 16.33%;
+        }
+        .col-3 {
+            width: 25%;
+        }
+        .col-4 {
+            width: 33.33333333%;
+        }
+        /*...*/
+        .col-12 {
+            width: 100%;
+        }
+        @media screen and (max-width: 500px) {
+            [class*="col-"] {
+                display: block;
+                width: 100%;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="col-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. At modi quam sunt excepturi, quos commodi iste, autem a quisquam qui maiores. Consequatur non optio minima sapiente neque laborum? Quidem, mollitia.</div><div class="col-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius numquam totam iure magni atque unde, tempore, veniam, quia nostrum doloribus aspernatur vero aperiam error. Laboriosam rem non eligendi dolores.</div><div class="col-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate perferendis labore nulla nostrum assumenda rem omnis voluptate vero ab velit et at beatae harum, numquam fuga voluptas deleniti. Beatae, atque.</div><div class="col-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate perferendis labore nulla nostrum assumenda rem omnis voluptate vero ab velit et at beatae harum, numquam fuga voluptas deleniti. Beatae, atque.</div>
+    </div>
+</body>
+</html>
