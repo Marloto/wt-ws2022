@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- https://getbootstrap.com/ -->
+    <!-- -> Get Started -->
+
+    <!-- https://getbootstrap.com/docs/5.2/ -->
+    <!-- "Modal" suchen und Beispiel kopieren -->
+    <div class="modal" id="some-id" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="something" class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="friends.html?action=accept&username=Track" class="btn btn-primary">Save changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function doSomething(username) {
+            // wie könnte man z.B. den Titel im Modal ändern?
+            // -> "Modal title" zu "Hallo Track" bzw. "Hallo [username]"
+            var el1 = document.getElementsByClassName("modal-title")[0];
+            var el2 = document.getElementById("something");
+            var el3 = document.querySelector("#some-id h5.modal-title");
+            var modalEl = document.querySelector("#some-id");
+            var link = document.querySelector("#some-id a.btn-primary");
+
+            // wie das Link-Ziel über die Objektreferenz in "link" verändern?
+            //link.setAttribute('href', "...");
+            link.href = "friends.html?username=" + username;
+
+            el1.innerText = "Hallo " + username;
+            var myModal = new bootstrap.Modal(modalEl); // das element mit class="modal" muss hier übergeben werden
+            // show, hide, toggle
+            myModal.show();
+        }
+
+        // Kurzform
+        // function doSomething(username) {
+        //     document.querySelector("#some-id a.btn-primary").href = "friends.html?username=" + username;
+        //     document.querySelector("#some-id h5.modal-title").innerText = "Hallo " + username;
+        //     new bootstrap.Modal(document.querySelector("#some-id")).show();
+        // }
+    </script>
+    
+    <button class="btn btn-primary" onclick="doSomething('Track')">Open Modal</button>
+    
+
+</body>
+
+</html>
