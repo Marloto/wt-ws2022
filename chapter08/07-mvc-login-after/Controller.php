@@ -57,15 +57,8 @@ class Controller {
             case 'logout':
                 $this->doLogout();
                 break;
-            case 'edit':
-                // ...
-                break;
-            case 'save':
-                // ...
-                break;
             default:
                 $this->showDefault();
-                // austauschen gegen default blog view
                 break;
         }
     }
