@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        
+        @keyframes something {
+            0% {
+                background-color: gray;
+                width: 200px;
+            }
+            50% {
+                width: 700px;
+            }
+            100% {
+                background-color: blue;
+                width: 500px;
+            }
+        }
+        .c {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            animation: something 5s;
+        }
     </style>
 </head>
 <body>
-    
+    <div class="c">
+
+    </div>
 </body>
 </html>

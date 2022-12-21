@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        
+        .a {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            margin-top: -150px;
+            transition: all 1s cubic-bezier(0.570, -0.470, 0.470, 1.510);
+            opacity: 0.5;
+        }
+        .a:hover {
+            background-color: blue;
+            margin-top: 0px;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    
+    <div class="a">
+
+    </div>
 </body>
 </html>
